@@ -1,0 +1,18 @@
+<header class="container">
+    <div class="row header-group">
+        <h1 class="text-center">Flickr Image Search</h1>
+        <form class="form-group">
+            <input type="search" class="form-control" (keyup)="search($event)" placeholder="Search for images">
+        </form>
+    </div>
+</header>
+<main class="container">
+    <section class="row no-gutters">
+        <article class="col-sm-12 col-md-6 col-lg-4" *ngFor="let image of images">
+            <button (click)="openModal(image.url, image.title)">
+                <img src="{{image.url}}_m.jpg" title="{{image.title}}" />
+            </button>
+        </article>
+        <article class="search-results" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="onScroll()"></article>
+    </section>
+</main>
